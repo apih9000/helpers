@@ -25,15 +25,15 @@ func main() {
 	secret := ""               // enter your secret key from CDN-resource here
 
 	//VOD
-	video_slug := "3dk4NsRt6vWsffEr"                      // enter your video's slug here
-	expires := time.Now().UTC().Unix() + 24*60*60         // 24 hours, unixtime in seconds
+	video_slug := "3dk4NsRt6vWsffEr"		// enter your video's slug here
+	expires := time.Now().Unix() + 24*60*60		// now + 24 hours, unixtime in seconds
 
 	token := gethash(client_id, video_slug, secret, expires)
 	fmt.Printf("https://demo-protected.gvideo.io/videos/%s_%s/%s/%d/master.m3u8 \n", client_id, video_slug, token, expires)
 
 	//LIVE
-	stream_id := "201693"                                 // enter your live stream id here
-	expires = time.Now().UTC().Unix() + 24*60*60          // 24 hours, unixtime in seconds
+	stream_id := "201693"				// enter your live stream id here
+	expires = time.Now().Unix() + 24*60*60		// now + 24 hours, unixtime in seconds
 
 	token = gethash(client_id, stream_id, secret, expires)
 	fmt.Printf("https://demo-protected.gvideo.io/cmaf/%s_%s/%s/%d/master.m3u8 \n", client_id, stream_id, token, expires)
